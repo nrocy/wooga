@@ -61,7 +61,7 @@ var sprites = [
 
     {x: 16*64, y: 4*64 + 32, texture_id: 5, dist:0, angle:0, visible:true, fixed:false, health: 5, hit_count:0, tint: 0},
     {x: 17*64 + 32, y: 12*64 + 32, texture_id: 5, dist:0, angle:0, visible:true, fixed:false, health: 5, hit_count:0, tint: 0},
-    {x: 6*64 + 32, y: 11*64 + 32, texture_id: 5, dist:0, angle:0, visible:true, fixed:false, health: 5, hit_count:0, tint: 0}
+    {x: 8*64 + 32, y: 11*64 + 32, texture_id: 5, dist:0, angle:0, visible:true, fixed:false, health: 5, hit_count:0, tint: 0}
   ];
 
 var map = [
