@@ -130,30 +130,26 @@ function loadtexture(id, idx) {
 }
 
 function loop() {
-  if( keymap[65] ) {
+  if( keymap[65] || keymap[37] ) {
     if(moving_backward)
-      player.tr -= 4;
+      player.tr -= 2;
     else
-      player.tr += 4;
+      player.tr += 2;
   }
 
-  if( keymap[68] ) {
+  if( keymap[68] || keymap[39] ) {
     if(moving_backward)
-      player.tr += 4;
+      player.tr += 2;
     else
-      player.tr -= 4;
+      player.tr -= 2;
   }
 
-  if( keymap[87]) {
+  if( keymap[87] || keymap[38]) {
     move_forward();
     moving_backward = false;
   }
 
-  if( keymap[80]) {
-    console.log( player.x, player.y, player.r );
-  }
-
-  if( keymap[83]) {
+  if( keymap[83] || keymap[40]) {
     move_backward();
     moving_backward = false;
   }
