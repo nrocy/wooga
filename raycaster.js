@@ -1,6 +1,6 @@
 
 var WALL_HEIGHT = 128;
-var player = {x:(3*64), y:(3 * 64)+32, h:WALL_HEIGHT >> 1, r:270, u:0};
+var player = {x:(3*64), y:(3 * 64)+32, h:WALL_HEIGHT >> 1, r:0, u:0};
 
 // handy constants
 var TO_RADIANS = Math.PI / 180;
@@ -57,27 +57,30 @@ var sprites = [
     {grid_x: 14 , grid_y: 4, texture_id: 20, dist:0, angle:0, visible:true, fixed:true},
     {grid_x: 5  , grid_y: 5, texture_id: 22, dist:0, angle:0, visible:true, fixed:true},
     */
-    {grid_x: 10 , grid_y: 10, texture_id: 4, dist:0, angle:0, visible:true, fixed:true, clickable:true},
-    {x: 6*64, y: 11*64 + 32, texture_id: 5, dist:0, angle:0, visible:true, fixed:false, health: 5, hit_count:0, tint: 0}
+    {grid_x: 17 , grid_y: 14, texture_id: 4, dist:0, angle:0, visible:true, fixed:true, clickable:true},
+
+    {x: 16*64, y: 4*64 + 32, texture_id: 5, dist:0, angle:0, visible:true, fixed:false, health: 5, hit_count:0, tint: 0},
+    {x: 17*64 + 32, y: 12*64 + 32, texture_id: 5, dist:0, angle:0, visible:true, fixed:false, health: 5, hit_count:0, tint: 0},
+    {x: 6*64 + 32, y: 11*64 + 32, texture_id: 5, dist:0, angle:0, visible:true, fixed:false, health: 5, hit_count:0, tint: 0}
   ];
 
 var map = [
   [1, 1, 1 , 1 , 1, 1 , 1 , 1, 1, 1, 1, 1, 1, 1, 1, 1 , 1, 1, 1] ,
-  [1, 0, 0 , 0 , 0, 1 , 0 , 0, 0, 0, 0, 0, 0, 0, 1, 1 , 0, 0, 1] ,
-  [1, 0, 0 , 0 , 0, 0 , 0 , 0, 0, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 19],
-  [1, 0, 0 , 0 , 0, 0, 0 , 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 11],
-  [1, 0, 0 , 0 , 0, 0, 0 , 0, 0, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 19],
-  [1, 0, 0 , 0 , 0, 0 , 0 , 0, 0, 0, 0, 0, 0, 0, 0, 1 , 1, 1, 1] ,
-  [1, 0, 0 , 0 , 0, 1 , 0 , 0, 0, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 0] ,
-  [1, 0, 0 , 0 , 0, 1 , 0 , 0, 0, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 0] ,
-  [1, 1, 1, 1, 1, 1 , 1 , 1, 0, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 0] ,
-  [1, 0, 0 , 0 , 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 0] ,
-  [1, 0, 0 , 0 , 0, 0 , 0 , 1, 0, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 0] ,
-  [1, 0, 0 , 0 , 0, 0 , 0 , 2, 0, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 0] ,
-  [1, 0, 0 , 0 , 0, 0 , 0 , 1, 0, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 0] ,
-  [1, 0, 0 , 0 , 0, 0 , 0 , 1, 0, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 0] ,
-  [1, 0, 0 , 0 , 0, 0 , 0 , 1, 0, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 0] ,
-  [1, 1, 1 , 1 , 1, 1 , 1 , 1, 1, 1, 1, 1, 1, 1, 1, 1 , 0, 0, 0]
+  [1, 0, 0 , 0 , 0, 0 , 0 , 0, 1, 0, 0, 0, 0, 0, 1, 1 , 0, 0, 1] ,
+  [1, 0, 0 , 0 , 0, 0 , 0 , 0, 1, 0, 0, 0, 0, 0, 0, 1 , 0, 0, 1],
+  [1, 0, 0 , 0 , 0, 0,  0 , 0, 1, 0, 0, 0, 0, 0, 0, 1,  0, 0, 1],
+  [1, 0, 0 , 0 , 0, 0,  0 , 0, 2, 0, 0, 0, 0, 0, 0, 2 , 0, 0, 1],
+  [1, 0, 0 , 0 , 0, 0 , 0 , 0, 1, 0, 0, 0, 0, 0, 0, 1 , 1, 1, 1] ,
+  [1, 0, 0 , 0 , 0, 0 , 0 , 0, 1, 0, 0, 0, 0, 0, 0, 0 , 0, 0, 1] ,
+  [1, 0, 0 , 0 , 0, 0 , 0 , 0, 1, 0, 0, 0, 0, 0, 0, 0 , 0, 0, 1] ,
+  [1, 1, 1 , 1,  1, 1 , 1 , 1, 1, 0, 0, 0, 0, 0, 0, 0 , 0, 0, 1] ,
+  [1, 0, 0 , 0 , 0, 0,  0,  1, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0, 1] ,
+  [1, 0, 0 , 0 , 0, 0 , 0 , 1, 0, 0, 0, 0, 0, 0, 0, 0 , 1, 2, 1] ,
+  [1, 0, 0 , 0 , 0, 0 , 0 , 2, 0, 0, 0, 0, 0, 0, 0, 0 , 1, 0, 1] ,
+  [1, 0, 0 , 0 , 0, 0 , 0 , 1, 0, 0, 0, 0, 0, 0, 0, 0 , 1, 0, 1] ,
+  [1, 0, 0 , 0 , 0, 0 , 0 , 1, 0, 0, 0, 0, 0, 0, 0, 0 , 1, 0, 1] ,
+  [1, 0, 0 , 0 , 0, 0 , 0 , 1, 0, 0, 0, 0, 0, 0, 0, 0 , 1, 0, 1] ,
+  [1, 1, 1 , 1 , 1, 1 , 1 , 1, 1, 1, 1, 1, 1, 1, 1, 1 , 1, 1, 1]
 ];
 
 // Init
@@ -154,26 +157,6 @@ function loop() {
     moving_backward = false;
   }
 
-  if( keymap[32] && !keyblock[32] ) {
-    if( collected_key ) {
-      map[11][7] = 0;
-    }
-
-    for( var i = sprites.length - 1 ; i >= 0 ; i-- ) {
-      if( !sprites[i].fixed ) {
-        if( sprites[i].dist < 150 ) {
-          keyblock[32] = true;
-
-          sprites[i].health--;
-          sprites[i].hit_count = 10;
-          if( sprites[i].health <= 0 ) {
-            sprites.splice(i, 1);
-          }
-        }
-      }
-    }
-  }
-
   tex_anim_counter++;
 
   if( tex_anim_counter % 2 === 0 ) {
@@ -218,9 +201,9 @@ function loop() {
   var player_grid_y = (player.y / WORLDCELL_H)|0;
 
   var wall_type = map[player_grid_y][player_grid_x];
-  if(( wall_type !== 0 && wall_type !== 14 )) {
-    player.x -= diffx;
-    player.y -= diffy;
+  if( wall_type !== 0 ) {
+    player.x -= 2 *diffx;
+    player.y -= 2 *diffy;
     player.tx = player.x;
     player.ty = player.y;
   }
@@ -240,6 +223,39 @@ function loop() {
   if( player.r < 0 ) {
     player.r = 360 + player.r;
     player.tr = 360 + player.tr;
+  }
+
+  if( keymap[32] && !keyblock[32] ) {
+    console.log(player_grid_x, player_grid_y);
+    if( (player_grid_x >= 5 && player_grid_x <= 7) && player_grid_y === 4 ) {
+      map[4][8] = 0;
+    }
+
+    if( (player_grid_x >= 12 && player_grid_x <= 14) && player_grid_y === 4 ) {
+      map[4][15] = 0;
+    }
+
+    if( (player_grid_x >= 17 && player_grid_x <= 18) && player_grid_y === 9 ) {
+      map[10][17] = 0;
+    }
+
+    if( collected_key ) {
+      map[11][7] = 0;
+    }
+
+    for( var i = sprites.length - 1 ; i >= 0 ; i-- ) {
+      if( !sprites[i].fixed ) {
+        if( sprites[i].dist < 150 ) {
+          keyblock[32] = true;
+
+          sprites[i].health--;
+          sprites[i].hit_count = 10;
+          if( sprites[i].health <= 0 ) {
+            sprites.splice(i, 1);
+          }
+        }
+      }
+    }
   }
 
   render();
