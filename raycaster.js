@@ -226,7 +226,7 @@ function loop() {
   }
 
   if( keymap[32] && !keyblock[32] ) {
-    console.log(player_grid_x, player_grid_y);
+    //console.log(player_grid_x, player_grid_y);
     if( (player_grid_x >= 5 && player_grid_x <= 7) && player_grid_y === 4 ) {
       map[4][8] = 0;
     }
